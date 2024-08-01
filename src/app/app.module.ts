@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
