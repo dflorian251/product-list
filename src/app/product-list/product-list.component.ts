@@ -4,6 +4,7 @@ import { NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IProduct } from './product';
 import { ConvertToSpacesPipe } from '../convert-to-spaces.pipe';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -20,11 +21,13 @@ import { ConvertToSpacesPipe } from '../convert-to-spaces.pipe';
 })
 export class ProductListComponent implements OnInit {
     pageTitle: string = 'Products List';
-    listFilter: string = '';
     imageMargin: number = 2;
     imageWidth: number = 50;
     showImage: boolean = false;
 
+    private _listFilter: string = '';
+
+    filteredProducts: IProduct[] = [];
     products: IProduct[] = [    
         {
             "productId": 1,
@@ -52,7 +55,25 @@ export class ProductListComponent implements OnInit {
         this.showImage = !this.showImage;
     }
 
+    get listFilter(): string {
+        return this._listFilter;
+    }
+
+    set listFilter(value: string) {
+        this._listFilter = value;
+        console.log('Setter: ', value);
+        this.filteredProducts = this.performFilter(value);
+    }
+
+    performFilter(filterBy: string): IProduct[] {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.products.filter((pruduct: IProduct) => {
+            return pruduct.productName.toLocaleLowerCase().includes(filterBy);
+        });
+    }
+
     ngOnInit(): void {
         console.log('Compoenent initialized.');
+        this.filteredProducts = this.products;
     }
 }
