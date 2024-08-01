@@ -13,6 +13,10 @@ import { NgIf, NgFor } from '@angular/common';
 })
 export class ProductListComponent {
     pageTitle: string = 'Products List';
+    imageMargin: number = 2;
+    imageWidth: number = 50;
+    showImage: boolean = false;
+
     products: any[] = [    
         {
             "productId": 1,
@@ -34,5 +38,9 @@ export class ProductListComponent {
             "starRating": 4.2,
             "imageUrl": "assets/images/garden_cart.png"
         },
-    ]
+    ];
+
+    toggleImage() {
+        this.showImage = !this.showImage;
+    }
 }
