@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IProduct } from './product';
 
 @Component({
   selector: 'app-product-list',
@@ -20,7 +21,7 @@ export class ProductListComponent {
     imageWidth: number = 50;
     showImage: boolean = false;
 
-    products: any[] = [    
+    products: IProduct[] = [    
         {
             "productId": 1,
             "productName": "Leaf Rake",
