@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IProduct } from './product';
+import { ConvertToSpacesPipe } from '../convert-to-spaces.pipe';
 
 @Component({
   selector: 'app-product-list',
@@ -9,12 +11,14 @@ import { IProduct } from './product';
   imports: [
     NgIf,
     NgFor,
-    FormsModule
+    FormsModule,
+    CommonModule,
+    ConvertToSpacesPipe,
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
     pageTitle: string = 'Products List';
     listFilter: string = '';
     imageMargin: number = 2;
@@ -46,5 +50,9 @@ export class ProductListComponent {
 
     toggleImage() {
         this.showImage = !this.showImage;
+    }
+
+    ngOnInit(): void {
+        console.log('Compoenent initialized.');
     }
 }
