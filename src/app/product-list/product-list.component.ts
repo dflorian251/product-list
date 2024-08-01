@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -7,12 +8,14 @@ import { NgIf, NgFor } from '@angular/common';
   imports: [
     NgIf,
     NgFor,
+    FormsModule
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent {
     pageTitle: string = 'Products List';
+    listFilter: string = '';
     imageMargin: number = 2;
     imageWidth: number = 50;
     showImage: boolean = false;
