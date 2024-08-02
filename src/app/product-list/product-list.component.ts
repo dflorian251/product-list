@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -6,7 +6,7 @@ import { IProduct } from './product';
 import { ConvertToSpacesPipe } from '../convert-to-spaces.pipe';
 import { StarComponent } from '../star/star.component';
 import { ProductService } from '../product.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -22,12 +22,13 @@ import { ProductService } from '../product.service';
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
     pageTitle: string = 'Products List';
     imageMargin: number = 2;
     imageWidth: number = 50;
     showImage: boolean = false;
     erroMsg: string = '';
+    sub: Subscription | undefined;
 
     private _listFilter: string = '';
 
@@ -58,13 +59,16 @@ export class ProductListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.products = this.productService.getProducts();
-        this.productService.getProducts().subscribe({
+        this.sub = this.productService.getProducts().subscribe({
             next: products => {
                 this.products = products;
                 this.filteredProducts = this.products;
             },
             error: err => this.erroMsg = err
         });
+    }
+
+    ngOnDestroy(): void {
+        this.sub?.unsubscribe();
     }
 }

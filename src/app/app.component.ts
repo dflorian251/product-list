@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 
 @Component({
@@ -8,6 +8,7 @@ import { ProductListComponent } from './product-list/product-list.component';
   imports: [
     RouterOutlet,
     ProductListComponent,
+    RouterModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
