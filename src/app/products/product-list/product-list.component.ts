@@ -7,6 +7,7 @@ import { ConvertToSpacesPipe } from '../../convert-to-spaces.pipe';
 import { StarComponent } from '../../star/star.component';
 import { ProductService } from '../product.service';
 import { Subscription } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -18,6 +19,7 @@ import { Subscription } from 'rxjs';
     CommonModule,
     ConvertToSpacesPipe,
     StarComponent,
+    RouterModule,
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
