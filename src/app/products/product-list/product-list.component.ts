@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IProduct } from './product';
-import { ConvertToSpacesPipe } from '../convert-to-spaces.pipe';
-import { StarComponent } from '../star/star.component';
+import { ConvertToSpacesPipe } from '../../convert-to-spaces.pipe';
+import { StarComponent } from '../../star/star.component';
 import { ProductService } from '../product.service';
 import { Subscription } from 'rxjs';
 
