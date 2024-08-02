@@ -1,0 +1,40 @@
+.container {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.display-1 {
+	font-size: 6rem;
+	font-weight: 300;
+	color: #dc3545;
+	margin-bottom: 0;
+}
+
+.display-4 {
+	font-size: 2.5rem;
+	font-weight: 400;
+	color: #6c757d;
+	margin-bottom: 1rem;
+}
+
+.lead {
+	font-size: 1.25rem;
+	color: #495057;
+	margin-bottom: 2rem;
+}
+
+.btn {
+	font-size: 1.25rem;
+}
+
+.btn-primary {
+	background-color: #007bff;
+	border-color: #007bff;
+}
+
+.btn-primary:hover {
+	background-color: #0056b3;
+	border-color: #004085;
+}
